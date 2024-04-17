@@ -13,6 +13,7 @@ require_once(APP . '/showFSP.php');
 
 use forum\Database;
 use forum\ForumList;
+use forum\ForumCreate;
 
 try {
     $database = new Database();
@@ -48,6 +49,12 @@ try {
                 echo "Erreur : Sujet non spécifié.";
             }
             require_once(APP . '/createForm.php');
+            break;
+        case 'login':
+            require_once(INC . '/login_form.php');
+            break;
+        case 'logout':
+            require_once(APP . '/logout.php');
             break;
     }
 } catch (PDOException $e) {

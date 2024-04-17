@@ -5,6 +5,7 @@ use PDO;
 use PDOException;
 
 class Database {
+    // Change it (for ex -> user: "root", pass: "root")
     private $host = "localhost";
     private $db = "forum";
     private $var = "charset=utf8";

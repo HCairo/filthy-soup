@@ -11,7 +11,6 @@ require_once(APP . '/showFSP.php');
 use forum\Database;
 use forum\ForumCreate;
 use forum\ForumList;
-use forum\FormCreate;
 
 try {
     $database = new Database();
