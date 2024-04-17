@@ -11,6 +11,25 @@ class ForumCreate {
         $this->cnx = $cnx;
     }
 
+    public function createUser($username, $email, $password) {
+        try {
+            // Hash the password
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            
+            // Prepare the SQL query
+            $query = $this->cnx->prepare("INSERT INTO user (username, email, password) VALUES (?, ?, ?)");
+        
+            // Execute the query with parameters
+            $query->execute([$username, $email, $hashedPassword]);
+        
+            // Return the last inserted ID
+            return $this->cnx->lastInsertId();
+        } catch (PDOException $e) {
+            // Throw an exception with the error message
+            throw new PDOException("Error creating account: " . $e->getMessage());
+        }
+    }    
+
     public function createTheme($nom) {
         try {
             // Prepare the SQL query

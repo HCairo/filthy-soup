@@ -20,6 +20,25 @@ try {
 
         $action = isset($_POST['action']) ? $_POST['action'] : "";
         switch ($action) {
+            case 'user':
+                $username = isset($_POST['username']) ? htmlspecialchars($_POST['username']) : null;
+                $email = isset($_POST['email']) ? htmlspecialchars($_POST['email']) : null;
+                $password = isset($_POST['password']) ? htmlspecialchars($_POST['password']) : null;
+        
+                // Validate input data
+                if ($username && $email && $password) {
+                    try {
+                        $forumCreate = new ForumCreate($database->getCnx());
+                        $userId = $forumCreate->createUser($username, $email, $password);
+                        echo "Account created successfully with ID: $userId";
+                    } catch (PDOException $e) {
+                        echo "Error creating account: " . $e->getMessage();
+                    }
+                } else {
+                    echo "Error: Missing parameters for account creation.";
+                }
+                break;
+            }        
             case 'themes':
                 // PROTECTION
                 $nom = isset($_POST['nom']) ? htmlspecialchars($_POST['nom']) : null;
@@ -63,6 +82,17 @@ try {
     // On affiche le bon formulaire selon le cas
     $action = isset($_GET['action']) ? $_GET['action'] : "";
     switch ($action) {
+        case 'user':
+            // On affiche le formulaire de creation de compte
+?>
+            <form method="post" action="index.php?action=user">
+                <input type="text" name="username" placeholder="Username" required><br>
+                <input type="email" name="email" placeholder="Email" required><br>
+                <input type="password" name="password" placeholder="Password" required><br>
+                <button type="submit">Create Account</button>
+            </form>
+<?php
+            break;
         case 'themes':
             // On affiche le formulaire de creation de theme
 ?>

@@ -50,6 +50,9 @@ try {
             }
             require_once(APP . '/createForm.php');
             break;
+        case 'user':
+            require_once(APP . '/createForm.php');
+            break;
         case 'login':
             require_once(INC . '/login_form.php');
             break;
