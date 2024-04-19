@@ -49,6 +49,15 @@ try {
             }
             require_once(APP . '/createForm.php');
             break;
+        case 'user':
+            require_once(APP . '/createUser.php');
+            break;
+        case 'login':
+            require_once(APP . '/loginUser.php');
+            break;
+        case 'logout':
+            require_once(APP . '/logOutUser.php');
+            break;
     }
 } catch (PDOException $e) {
     echo "Erreur : " . $e->getMessage();
