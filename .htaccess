@@ -1,0 +1,22 @@
+RewriteEngine On
+
+# Réécriture pour le cas par défaut
+RewriteRule ^$ index.php [L,QSA]
+
+# Réécriture pour le cas 'themes'
+RewriteRule ^themes/([0-9]+)$ index.php?action=themes=$1 [L,QSA]
+
+# Réécriture pour le cas 'sujets'
+RewriteRule ^sujets/([0-9]+)$ index.php?action=sujets&themesId=$1 [L,QSA]
+
+# Réécriture pour le cas 'posts'
+RewriteRule ^posts/([0-9]+)$ index.php?action=posts&topicId=$1 [L,QSA]
+
+# Réécriture pour le cas 'user'
+RewriteRule ^user$ index.php?action=user [L,QSA]
+
+# Réécriture pour le cas 'login'
+RewriteRule ^login$ index.php?action=login [L,QSA]
+
+# Réécriture pour le cas 'logout'
+RewriteRule ^logout$ index.php?action=logout [L,QSA]
