@@ -21,6 +21,7 @@ try {
     switch ($action) {
         default:
             // Page par défaut
+            echo '<h1>Welcome on my site</h1>';
             break;
         case 'themes':
             $forumList = new ForumList($database->getCnx());

@@ -8,7 +8,3 @@
     <link rel="stylesheet" href="<?php echo ASSETS ?>/css/styles.css">
     <!-- Other meta tags, scripts, etc. -->
 </head>
-<body>
-    <header>
-        <!-- Your website header content, navigation menus, logos, etc. -->
-    </header>
